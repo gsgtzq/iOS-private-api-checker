@@ -68,4 +68,6 @@ app/static/upload/*.ipa
 docSet*
 utils/*.xlsx
 *.DS_Store
-
+.project
+.pydevproject
+.settings
