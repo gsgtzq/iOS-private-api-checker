@@ -36,6 +36,15 @@ var myDropzone = new Dropzone("#ipa_file", {
                 '</div>';
                 $('#framework_append_div').append(html);
 			};
+			//显示加入到描述文件的设备信息
+			$('#provisioned_devices_in_app div.api_section').remove();
+			for (var i = 0; i < data.data.provisioned_devices.length; i++) {
+				var device = data.data.provisioned_devices[i];
+				var html = '<div class="api_section section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">' + 
+                  '<h5>' + (i + 1) + '、' + device + '</h5>' + 
+                '</div>';
+                $('#device_append_div').append(html);
+			};
 		}
 		else {
 			alert(data.data);
