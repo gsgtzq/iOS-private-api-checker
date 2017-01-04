@@ -24,6 +24,5 @@ def dump_app(app_path):
     '''
     get all private variables, properties, and interface name
     '''
-    class_dump = class_dump_path + " %s" % app_path
-    dump_result = subprocess.check_output(class_dump.split())
+    dump_result = subprocess.check_output([class_dump_path, app_path])
     return dump_result

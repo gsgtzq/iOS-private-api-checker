@@ -30,11 +30,9 @@ def get_executable_file(path):
     cmd = u"python -mmacholib find %s" % (path)
     out = subprocess.check_output(cmd.split())
     if out:
-        out = out.split()
-        if out and len(out) > 0:
-             return os.path.join(path, out[0])
+        out = out.split('\n')[0]
+        return out
     return False
-    
 
 
 def get_app_strings(app_path, pid):
@@ -43,13 +41,12 @@ def get_app_strings(app_path, pid):
         app : the full path of the Mach-O file in app
     Returns:
         output : the result of the strings app
-        
+
     info:strings - 显示文件中的可打印字符
     strings 的主要用途是确定非文本文件的包含的文本内容。
     """
-    cmd = "/usr/bin/strings %s" % app_path
-    output = subprocess.check_output(cmd.split())
-    
+    # cmd = "/usr/bin/strings %s" % app_path
+    output = subprocess.check_output(['/usr/bin/strings', app_path])
     return set(output.split())
 
 
